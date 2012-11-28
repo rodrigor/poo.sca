@@ -25,5 +25,13 @@ public class Disciplina {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
+	
+	public String toString(){
+		StringBuffer str = new StringBuffer();
+		str.append(">>> Disciplina\n");
+		str.append("Nome: "+this.nome+"\n");
+		str.append("Codigo: "+this.codigo+"\n");
+		return str.toString();
+	}
 
 }

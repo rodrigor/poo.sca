@@ -1,14 +1,13 @@
 package poo.sca.ui;
 
-import java.util.Scanner;
-
+import poo.sca.Disciplina;
 import poo.sca.SCAFacade;
 
 public class SCA {
 	
 	private SCAFacade facade;
 	
-	public void SCA(){
+	public SCA(){
 		this.facade = new SCAFacade();
 	}
 	
@@ -39,7 +38,8 @@ public class SCA {
 	private void cadastrarDisciplina() {
 		String nome = Util.lerString("Digite o nome da disciplina:");
 		int codigo = Util.lerInteiro("Digite o c—digo da disciplina:");
-		facade.criarDisciplina(nome,codigo);
+		Disciplina d = facade.criarDisciplina(nome,codigo);
+		Util.alert("Disciplina criada com sucesso!\n"+d);
 		
 	}
 
