@@ -13,7 +13,7 @@ public class SCA {
 	
 	public void exibirMenu(){
 		StringBuffer menu = new StringBuffer();
-		menu.append(">>> SISTEMA DE CONTROLE ACADæMICO <<<<\n");
+		menu.append(">>> SISTEMA DE CONTROLE ACADÃŠMICO <<<<\n");
 		menu.append("    0 - SAIR\n");
 		menu.append("    1 - Cadastrar Disciplina\n");
 		menu.append("Digite a opcao:");
@@ -21,14 +21,14 @@ public class SCA {
 		do{
 			switch(Util.lerInteiro(menu.toString())){
 			case 0:
-				Util.alert("AtŽ a pr—xima!");
+				Util.alert("AtÃ© a prÃ³xima!");
 				fim = true;
 				break;
 			case 1:
 				cadastrarDisciplina();
 				break;
 			default:
-				Util.alert("Op‹o inv‡lida!");
+				Util.alert("OpÃ§Ã£oo invÃ¡lida!");
 			}
 		}while(!fim);
 	}
@@ -37,7 +37,7 @@ public class SCA {
 
 	private void cadastrarDisciplina() {
 		String nome = Util.lerString("Digite o nome da disciplina:");
-		int codigo = Util.lerInteiro("Digite o c—digo da disciplina:");
+		int codigo = Util.lerInteiro("Digite o cÃ³digo da disciplina:");
 		Disciplina d = facade.criarDisciplina(nome,codigo);
 		Util.alert("Disciplina criada com sucesso!\n"+d);
 		
