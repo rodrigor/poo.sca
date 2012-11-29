@@ -1,4 +1,4 @@
-package poo.sca;
+package poo.sca; //Pacote
 
 public class SCAFacade {
 	
