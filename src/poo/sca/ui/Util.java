@@ -14,7 +14,7 @@ public class Util {
 		do{
 			entrada = JOptionPane.showInputDialog(msg);
 			if(entrada == null || entrada.equals(""))
-				alert("Entrada inválida!");
+				alert("Entrada inv√°lida!");
 			else
 				fim = true;
 		}while(!fim);
@@ -31,7 +31,7 @@ public class Util {
 				valor = Integer.parseInt(entrada);
 				fim = true;
 			}catch(Exception e){
-				alert("Entrada inválida!");
+				alert("Entrada inv√°lida!");
 			}
 		}while(!fim);
 		return valor;

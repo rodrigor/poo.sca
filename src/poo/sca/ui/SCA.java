@@ -1,7 +1,10 @@
 package poo.sca.ui;
 
+import java.util.Iterator;
+
 import poo.sca.Disciplina;
 import poo.sca.SCAFacade;
+import poo.sca.SCARuntimeError;
 
 public class SCA {
 	
@@ -16,6 +19,7 @@ public class SCA {
 		menu.append(">>> SISTEMA DE CONTROLE ACADÊMICO <<<<\n");
 		menu.append("    0 - SAIR\n");
 		menu.append("    1 - Cadastrar Disciplina\n");
+		menu.append("    2 - Listar Disciplinas\n");
 		menu.append("Digite a opcao:");
 		boolean fim = false;
 		do{
@@ -27,20 +31,38 @@ public class SCA {
 			case 1:
 				cadastrarDisciplina();
 				break;
+			case 2:
+				listarDisciplinas();
+				break;
 			default:
 				Util.alert("Opçãoo inválida!");
 			}
 		}while(!fim);
 	}
-	
+
 	
 
 	private void cadastrarDisciplina() {
 		String nome = Util.lerString("Digite o nome da disciplina:");
 		int codigo = Util.lerInteiro("Digite o código da disciplina:");
 		Disciplina d = facade.criarDisciplina(nome,codigo);
-		Util.alert("Disciplina criada com sucesso!\n"+d);
-		
+		Util.alert("Disciplina criada com sucesso!\n"+d);	
+	}
+	
+	private void listarDisciplinas(){
+		StringBuilder msg = new StringBuilder();
+		msg.append(">>>> DISCIPLINAS <<<<<\n");
+		Disciplina disciplina;
+		try{
+			Iterator<Disciplina> it = facade.getDisciplinasIterator();
+			while(it.hasNext()){
+				disciplina = it.next();
+				msg.append(disciplina.getCodigo()+"\t| "+disciplina.getNome()+"\n");
+			}
+		}catch(SCARuntimeError e){
+			e.printStackTrace();
+		}
+		Util.alert(msg.toString());
 	}
 
 	public static void main(String[] args) {
