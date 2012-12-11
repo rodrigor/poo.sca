@@ -60,6 +60,7 @@ public class SCA {
 				msg.append(disciplina.getCodigo()+"\t| "+disciplina.getNome()+"\n");
 			}
 		}catch(SCARuntimeError e){
+			// COLOCAR LOG AQUI!!!
 			e.printStackTrace();
 		}
 		Util.alert(msg.toString());
