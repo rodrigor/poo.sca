@@ -20,6 +20,8 @@ public class Disciplina {
 	}
 
 	public void setNome(String nome) {
+		if(nome == null || nome.equals(""))
+			throw new SCARuntimeException("Nome inválido: '"+nome+"'");
 		this.nome = nome;
 	}
 
@@ -28,14 +30,16 @@ public class Disciplina {
 	}
 
 	public void setCodigo(int codigo) {
+		if(codigo <= 0 || codigo >= 99999)
+			throw new SCARuntimeException("Código inválido: "+codigo);
 		this.codigo = codigo;
 	}
 	
 	public String toString(){
 		StringBuffer str = new StringBuffer();
 		str.append(">>> Disciplina\n");
-		str.append("Nome: "+this.nome+"\n");
-		str.append("Codigo: "+this.codigo+"\n");
+		str.append("Nome:\t\t"+this.nome+"\n");
+		str.append("Codigo:\t\t"+this.codigo+"\n");
 		return str.toString();
 	}
 

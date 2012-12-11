@@ -14,7 +14,10 @@ public class SCAFacade {
 		persistencia = new SCAPersistenciaArquivo();
 	}
 
-	public Disciplina criarDisciplina(String nome, int codigo) {
+	public Disciplina criarDisciplina(String nome, int codigo) throws SCAException {
+		if(existeDisciplina(codigo)){
+			throw new SCAException("Já existe uma disciplina com o código '"+codigo+"'");
+		}
 		Disciplina disciplina = new Disciplina(nome,codigo);
 		try {
 			persistencia.salvar(disciplina);
@@ -31,6 +34,14 @@ public class SCAFacade {
 			throw new SCARuntimeException(e);
 		}
 		
+	}
+	
+	private boolean existeDisciplina(int codigo){
+		Iterator<Disciplina> it = getDisciplinasIterator();
+		while(it.hasNext()){
+			if(it.next().getCodigo() == codigo) return true;
+		}
+		return false;
 	}
 
 }
