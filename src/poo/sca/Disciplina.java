@@ -5,6 +5,11 @@ public class Disciplina {
 	private String nome;
 	private int codigo;
 	
+	
+	public Disciplina(){
+		this.nome = "";
+		this.codigo = 0;
+	}
 	public Disciplina(String nome, int codigo){
 		this.setNome(nome);
 		this.setCodigo(codigo);
