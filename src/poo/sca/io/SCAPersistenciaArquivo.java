@@ -56,6 +56,7 @@ public class SCAPersistenciaArquivo implements SCAPersistencia {
 			return disciplinas;
 
 		FileInputStream in;
+		int nlinha = 0;
 		try {
 			in = new FileInputStream(disciplinaFile);
 			BufferedReader reader = new BufferedReader(
@@ -63,7 +64,10 @@ public class SCAPersistenciaArquivo implements SCAPersistencia {
 
 			String linha;
 			while ((linha = reader.readLine()) != null) {
+				nlinha++;
 				StringTokenizer tokens = new StringTokenizer(linha,";");
+				if(tokens.countTokens() != 2)
+					throw new SCAPersistenciaException("Erro no formato do arquivo!\n Arquivo: "+disciplinaFile.toString()+"\n Linha: "+nlinha);
 				Disciplina disc = new Disciplina();
 				disc.setCodigo(Integer.parseInt(tokens.nextToken()));
 				disc.setNome(tokens.nextToken());
@@ -71,7 +75,7 @@ public class SCAPersistenciaArquivo implements SCAPersistencia {
 			}
 			reader.close();
 		} catch (Exception e) {
-			throw new SCAPersistenciaException(e);
+			throw new SCAPersistenciaException("Erro ao ler o arquivo "+disciplinaFile.toString()+", na linha:"+nlinha,e);
 		}
 		return disciplinas;
 	}

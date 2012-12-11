@@ -2,9 +2,10 @@ package poo.sca.ui;
 
 import java.util.Iterator;
 
+import poo.logger.Logger;
 import poo.sca.Disciplina;
 import poo.sca.SCAFacade;
-import poo.sca.SCARuntimeError;
+import poo.sca.SCARuntimeException;
 
 public class SCA {
 	
@@ -51,17 +52,18 @@ public class SCA {
 	
 	private void listarDisciplinas(){
 		StringBuilder msg = new StringBuilder();
-		msg.append(">>>> DISCIPLINAS <<<<<\n");
 		Disciplina disciplina;
 		try{
 			Iterator<Disciplina> it = facade.getDisciplinasIterator();
+			msg.append(">>>> DISCIPLINAS <<<<<\n");
 			while(it.hasNext()){
 				disciplina = it.next();
 				msg.append(disciplina.getCodigo()+"\t| "+disciplina.getNome()+"\n");
 			}
-		}catch(SCARuntimeError e){
-			// COLOCAR LOG AQUI!!!
-			e.printStackTrace();
+		}catch(SCARuntimeException e){
+			Logger.getInstance().log(e);
+			msg.append("Atenção! Houve um erro ao recuperar as disciplinas.\n");
+			msg.append("Por favor ligue para a Microsoft: 0800-8911057\n");
 		}
 		Util.alert(msg.toString());
 	}
