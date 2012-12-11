@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package poo.sca;
 
 import java.util.Iterator;
@@ -34,3 +35,22 @@ public class SCAFacade {
 	}
 
 }
+=======
+package poo.sca; //Pacote
+
+public class SCAFacade {
+	
+	private SCAPersistencia persistencia;
+	
+	public SCAFacade(){
+		persistencia = new SCAPersistenciaMemoria();
+	}
+
+	public Disciplina criarDisciplina(String nome, int codigo) {
+		Disciplina disciplina = new Disciplina(nome,codigo);
+		persistencia.salvar(disciplina);
+		return disciplina;
+	}
+
+}
+>>>>>>> 11a7c3055c4c9d199312cfbbd6ae3a6f0ea522fa
