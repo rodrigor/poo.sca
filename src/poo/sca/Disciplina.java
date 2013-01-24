@@ -48,5 +48,10 @@ public class Disciplina {
 		str.append("Codigo:\t\t"+this.codigo+"\n");
 		return str.toString();
 	}
+	
+	public boolean equals(Object d){
+		if(!(d instanceof Disciplina)) return false;
+		return this.codigo == ((Disciplina)d).codigo;
+	}
 
 }
