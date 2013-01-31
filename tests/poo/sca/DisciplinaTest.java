@@ -3,6 +3,7 @@ package poo.sca;
 import static org.junit.Assert.*;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.junit.After;
@@ -69,7 +70,14 @@ public class DisciplinaTest {
 		set.add(new Disciplina("POO",123));
 		set.add(new Disciplina("POO2",123));
 		
+		Iterator<Disciplina> it = set.iterator();
+		assertTrue(it.hasNext());
+		assertEquals(new Disciplina("POO",123),it.next());
+		assertFalse(it.hasNext());
+		
 		assertTrue(set.contains(new Disciplina("POO",123)));
+		assertTrue(set.contains(new Disciplina("POO2",123)));
+
 		
 	}
 
