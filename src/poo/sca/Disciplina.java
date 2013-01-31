@@ -49,9 +49,18 @@ public class Disciplina {
 		return str.toString();
 	}
 	
+	@Override 
 	public boolean equals(Object d){
 		if(!(d instanceof Disciplina)) return false;
 		return this.codigo == ((Disciplina)d).codigo;
 	}
+	
+	@Override
+	public int hashCode() {
+        int result = 34;
+        result = 54 * result + codigo;
+        result = 31 * result + nome.hashCode();
+        return result;
+}
 
 }
